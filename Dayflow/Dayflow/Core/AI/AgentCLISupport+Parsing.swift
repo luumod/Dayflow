@@ -240,7 +240,7 @@ extension AgentCLISupporting {
   }
 
   func makeCtx(
-    batchId: Int64?, operation: String, model: String, startedAt: Date, attempt: Int = 1
+    batchId: Int64?, operation: String, model: String?, startedAt: Date, attempt: Int = 1
   )
     -> LLMCallContext
   {

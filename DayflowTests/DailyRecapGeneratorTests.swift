@@ -44,6 +44,15 @@ final class DailyRecapGeneratorTests: XCTestCase {
     XCTAssertEqual(jsonObject["preferred_output_language"] as? String, "Japanese")
   }
 
+  func testChatGPTDailyRecapUsesCodexCLIDefaultModel() {
+    XCTAssertEqual(DailyRecapProvider.chatgpt.selectionLabel, "Codex CLI default")
+    XCTAssertNil(DailyRecapProvider.chatgpt.modelOrTool)
+
+    let metadata = DailyStandupGenerationMetadata(provider: .chatgpt)
+    XCTAssertNil(metadata.modelOrTool)
+    XCTAssertEqual(metadata.displayLabel, "Codex CLI default")
+  }
+
   func testSourceResolverAllowsFridayForMondayWhenWeekendHasNoActivity() throws {
     let mondayStart = try dayStart("2026-06-01")
     let sourceDay = DailyRecapSourceDayResolver.sourceDay(

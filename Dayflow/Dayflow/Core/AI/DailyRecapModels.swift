@@ -89,7 +89,7 @@ enum DailyRecapProvider: String, Codable, CaseIterable, Sendable {
     case .gemini:
       return GeminiModelPreference.default.primary.displayName
     case .chatgpt:
-      return "GPT-5.4"
+      return "Codex CLI default"
     case .claude:
       return "Claude Opus"
     case .none:
@@ -106,7 +106,7 @@ enum DailyRecapProvider: String, Codable, CaseIterable, Sendable {
     case .gemini:
       return GeminiModelPreference.default.primary.displayName
     case .chatgpt:
-      return "GPT-5.4"
+      return "Uses the model configured in Codex CLI."
     case .claude:
       return "Claude Opus"
     case .none:
@@ -138,7 +138,7 @@ enum DailyRecapProvider: String, Codable, CaseIterable, Sendable {
     case .gemini:
       return GeminiModelPreference.default.primary.rawValue
     case .chatgpt:
-      return "gpt-5.4"
+      return nil
     case .claude:
       return "opus"
     case .none:
@@ -213,7 +213,7 @@ struct DailyStandupGenerationMetadata: Codable, Equatable, Sendable {
       return modelOrTool.flatMap(GeminiModel.init(rawValue:))?.displayName
         ?? modelOrTool ?? "Gemini"
     case .chatgpt:
-      return "GPT-5.4"
+      return modelOrTool ?? "Codex CLI default"
     case .claude:
       return "Claude Opus"
     case .none:

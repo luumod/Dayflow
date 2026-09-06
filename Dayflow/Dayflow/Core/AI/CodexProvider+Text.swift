@@ -54,7 +54,7 @@ extension CodexProvider {
 
   func generateText(
     prompt: String,
-    model: String,
+    model: String?,
     reasoningEffort: String? = nil,
     disableTools: Bool = true
   ) async throws -> (text: String, log: LLMCall) {
